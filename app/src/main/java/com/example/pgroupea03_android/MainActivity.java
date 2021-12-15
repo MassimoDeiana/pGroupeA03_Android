@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(result!= null){
             if(result.getContents()!=null){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                //Url du QR
                 builder.setMessage(result.getContents());
                 builder.setTitle("Scanning result");
                 builder.setPositiveButton("scan again", new DialogInterface.OnClickListener() {

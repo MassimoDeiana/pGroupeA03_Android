@@ -1,6 +1,6 @@
 package com.example.pgroupea03_android;
 
-import  com.example.pgroupea03_android.model.DtoStudent;
+import com.example.pgroupea03_android.model.DtoStudent;
 import com.example.pgroupea03_android.model.Login;
 import com.example.pgroupea03_android.model.Teacher;
 
@@ -20,9 +20,6 @@ public interface TeacherClient {
 
     @GET("Teacher")
     Call<ResponseBody> getTeacher(@Header("Authorization") String authToken);
-
-    @GET("Student")
-    Call<List<DtoStudent>> getStudent();
 
 
 }

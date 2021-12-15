@@ -3,9 +3,7 @@ package com.example.pgroupea03_android;
 import  androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,10 +13,6 @@ import com.example.pgroupea03_android.model.Login;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
 import com.example.pgroupea03_android.model.Teacher;
 
-import org.json.JSONStringer;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -46,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         etname = findViewById(R.id.et_loginActivity_name);
         etpasswd = findViewById(R.id.et_loginActivity_passwd);
 
-        btnLogin.setOnClickListener((view)->{getTeacher();});
+        btnLogin.setOnClickListener((view)->{login();});
 
 
     }
@@ -62,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Teacher> call, Response<Teacher> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, response.body().getToken(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, response.body().getToken(), Toast.LENGTH_SHORT).show();
                     token = response.body().getToken();
                 }else{
                     Toast.makeText(LoginActivity.this, "login not correct :(", Toast.LENGTH_SHORT).show();
@@ -75,31 +69,32 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+/*
     private void getTeacher(){
-        Call<List<DtoStudent>> call = teacherClient.getStudent();
-        call.enqueue(new Callback<List<DtoStudent>>() {
+        Call<ResponseBody>call = teacherClient.getTeacher(token);
+        call.enqueue(new Callback<ResponseBody>() {
+
             @Override
-            public void onResponse(Call<List<DtoStudent>> call, Response<List<DtoStudent>> response) {
-                Log.d("code","code :"+response.code());
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                 if(response.isSuccessful()){
                     try {
-                        Log.d("ok","ok ");
-                        Toast.makeText(LoginActivity.this, "GG", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, response.body().string(), Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }else{
-                    Toast.makeText(LoginActivity.this, "token is not correct :(", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(LoginActivity.this, "token is not correct :("+response, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<DtoStudent>> call, Throwable t) {
-                Toast.makeText(LoginActivity.this,"Error get :(",Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(LoginActivity.this,"Error get :("+t.toString(),Toast.LENGTH_SHORT).show();
             }
         });
     }
-
+*/
 
 }
