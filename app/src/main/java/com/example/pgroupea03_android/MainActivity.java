@@ -15,22 +15,36 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnScan;
-    Button btnConnection;
+    private Button btnScan;
+    private Button btnTeacherConnection;
+    private Button btnStudentConnection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnScan=findViewById(R.id.btn_mainActivity_scanQr);
+        initViewInstances();
+        initListeners();
+    }
+
+    private void initViewInstances() {
+        btnScan = findViewById(R.id.btn_mainActivity_scanQr);
+        btnTeacherConnection = findViewById(R.id.btn_mainActivity_loginTeacher);
+        btnStudentConnection = findViewById(R.id.btn_mainActivity_loginStudent);
+    }
+
+    private void initListeners() {
         btnScan.setOnClickListener(this);
 
-        btnConnection=findViewById(R.id.btn_mainActivity_login);
-        btnConnection.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        btnTeacherConnection.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this,LoginTeacherActivity.class);
             startActivity(intent);
+        });
 
+        btnStudentConnection.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this,LoginStudentActivity.class);
+            startActivity(intent);
         });
     }
 
