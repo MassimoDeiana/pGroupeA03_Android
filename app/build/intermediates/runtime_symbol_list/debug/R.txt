@@ -2330,7 +2330,10 @@ int id transition_position 0x7f0801cd
 int id transition_scene_layoutid_cache 0x7f0801ce
 int id transition_transform 0x7f0801cf
 int id triangle 0x7f0801d0
+int id tv_interrogationDetailFragment_delete 0x7f08020a
 int id tv_interrogationDetailFragment_subject 0x7f080206
+int id tv_interrogationDetailFragment_text 0x7f080208
+int id tv_interrogationDetailFragment_total 0x7f080209
 int id tv_interrogationFragmentItem_subject 0x7f080201
 int id tv_teacherFragmentItem_Mail 0x7f0801d1
 int id tv_teacherFragmentItem_lastName 0x7f0801d4

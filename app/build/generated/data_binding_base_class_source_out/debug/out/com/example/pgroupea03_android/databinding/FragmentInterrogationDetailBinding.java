@@ -4,6 +4,7 @@ package com.example.pgroupea03_android.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -20,12 +21,27 @@ public final class FragmentInterrogationDetailBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
+  public final Button tvInterrogationDetailFragmentDelete;
+
+  @NonNull
   public final TextView tvInterrogationDetailFragmentSubject;
 
+  @NonNull
+  public final TextView tvInterrogationDetailFragmentText;
+
+  @NonNull
+  public final TextView tvInterrogationDetailFragmentTotal;
+
   private FragmentInterrogationDetailBinding(@NonNull FrameLayout rootView,
-      @NonNull TextView tvInterrogationDetailFragmentSubject) {
+      @NonNull Button tvInterrogationDetailFragmentDelete,
+      @NonNull TextView tvInterrogationDetailFragmentSubject,
+      @NonNull TextView tvInterrogationDetailFragmentText,
+      @NonNull TextView tvInterrogationDetailFragmentTotal) {
     this.rootView = rootView;
+    this.tvInterrogationDetailFragmentDelete = tvInterrogationDetailFragmentDelete;
     this.tvInterrogationDetailFragmentSubject = tvInterrogationDetailFragmentSubject;
+    this.tvInterrogationDetailFragmentText = tvInterrogationDetailFragmentText;
+    this.tvInterrogationDetailFragmentTotal = tvInterrogationDetailFragmentTotal;
   }
 
   @Override
@@ -55,14 +71,33 @@ public final class FragmentInterrogationDetailBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.tv_interrogationDetailFragment_delete;
+      Button tvInterrogationDetailFragmentDelete = ViewBindings.findChildViewById(rootView, id);
+      if (tvInterrogationDetailFragmentDelete == null) {
+        break missingId;
+      }
+
       id = R.id.tv_interrogationDetailFragment_subject;
       TextView tvInterrogationDetailFragmentSubject = ViewBindings.findChildViewById(rootView, id);
       if (tvInterrogationDetailFragmentSubject == null) {
         break missingId;
       }
 
+      id = R.id.tv_interrogationDetailFragment_text;
+      TextView tvInterrogationDetailFragmentText = ViewBindings.findChildViewById(rootView, id);
+      if (tvInterrogationDetailFragmentText == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_interrogationDetailFragment_total;
+      TextView tvInterrogationDetailFragmentTotal = ViewBindings.findChildViewById(rootView, id);
+      if (tvInterrogationDetailFragmentTotal == null) {
+        break missingId;
+      }
+
       return new FragmentInterrogationDetailBinding((FrameLayout) rootView,
-          tvInterrogationDetailFragmentSubject);
+          tvInterrogationDetailFragmentDelete, tvInterrogationDetailFragmentSubject,
+          tvInterrogationDetailFragmentText, tvInterrogationDetailFragmentTotal);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

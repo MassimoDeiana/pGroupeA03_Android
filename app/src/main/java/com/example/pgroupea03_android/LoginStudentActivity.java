@@ -65,7 +65,8 @@ public class LoginStudentActivity extends AppCompatActivity {
 
                     int idStudent = response.body().getIdStudent();
 
-                    sessionManager.saveAuthToken(idStudent + token);
+                    sessionManager.saveAuthToken(token);
+                    sessionManager.saveAuthId(idStudent);
 
                     Intent intent = new Intent(LoginStudentActivity.this, TeacherListActivity.class);
                     startActivity(intent);

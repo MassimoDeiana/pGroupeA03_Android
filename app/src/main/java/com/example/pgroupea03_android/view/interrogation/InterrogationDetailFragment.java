@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pgroupea03_android.R;
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
@@ -30,8 +32,12 @@ public class InterrogationDetailFragment extends Fragment {
 
     private int idInterrogation;
     private DtoOutputInterrogation currentInterrogation;
+    private IInterrogationRepository repository;
 
     private TextView tvSubject;
+    private TextView tvTotal;
+
+    private Button btnDelete;
 
     public InterrogationDetailFragment() {
         // Required empty public constructor
@@ -50,13 +56,13 @@ public class InterrogationDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             idInterrogation = getArguments().getInt(ARG_ID);
+            repository = Retrofit.getInstance(getContext()).create(IInterrogationRepository.class);
             fetchInterrogationById(idInterrogation);
         }
     }
 
     private void fetchInterrogationById(int idInterrogation) {
-        System.out.println(idInterrogation);
-        Retrofit.getInstance(getContext()).create(IInterrogationRepository.class).getById(idInterrogation).enqueue(new Callback<DtoOutputInterrogation>() {
+        repository.getById(idInterrogation).enqueue(new Callback<DtoOutputInterrogation>() {
             @Override
             public void onResponse(Call<DtoOutputInterrogation> call, Response<DtoOutputInterrogation> response) {
                 if(response.code() == 201) {
@@ -74,8 +80,8 @@ public class InterrogationDetailFragment extends Fragment {
 
     private void updateView() {
         tvSubject.setText(currentInterrogation.getSubject());
+        tvTotal.setText(String.valueOf(currentInterrogation.getTotal()));
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +89,30 @@ public class InterrogationDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_interrogation_detail, container, false);
         tvSubject = view.findViewById(R.id.tv_interrogationDetailFragment_subject);
+        tvTotal = view.findViewById(R.id.tv_interrogationDetailFragment_total);
+        btnDelete = view.findViewById(R.id.tv_interrogationDetailFragment_delete);
+        initListeners();
         return view;
+    }
+
+    private void initListeners() {
+        btnDelete.setOnClickListener(view -> {
+            repository.delete(idInterrogation).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if(response.code() == 200) {
+                        Toast.makeText(getContext(), "Interrogation deleted successfully", Toast.LENGTH_LONG).show();
+                        fetchInterrogationById(1);
+                    } else {
+                        Toast.makeText(getContext(), "At least one student has a note on this question. Please delete it first.", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+
+                }
+            });
+        });
     }
 }

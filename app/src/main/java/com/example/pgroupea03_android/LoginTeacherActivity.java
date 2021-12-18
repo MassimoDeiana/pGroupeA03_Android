@@ -70,7 +70,8 @@ public class LoginTeacherActivity extends AppCompatActivity {
 
                     int idTeacher = response.body().getIdTeacher();
 
-                    sessionManager.saveAuthToken(idTeacher + token);
+                    sessionManager.saveAuthToken(token);
+                    sessionManager.saveAuthId(idTeacher);
 
                     Intent intent = new Intent(LoginTeacherActivity.this, TeacherActivity.class);
                     startActivity(intent);
