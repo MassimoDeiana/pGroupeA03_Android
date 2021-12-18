@@ -10,6 +10,7 @@ public class TeacherListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_list);
-
     }
+
+
 }

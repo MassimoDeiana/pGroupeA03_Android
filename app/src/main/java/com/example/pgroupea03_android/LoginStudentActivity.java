@@ -24,22 +24,18 @@ public class LoginStudentActivity extends AppCompatActivity {
     private EditText etMail, etPwd;
 
     private SessionManager sessionManager;
-    private retrofit2.Retrofit retrofit;
-    private IStudentRepository studentRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_teacher);
 
-        initRetrofit();
+        initSession();
         initViewInstances();
         initListeners();
     }
 
-    private void initRetrofit() {
-        retrofit = Retrofit.getInstance(this);
-        studentRepository = retrofit.create(IStudentRepository.class);
+    private void initSession() {
         sessionManager = new SessionManager(this);
     }
 
@@ -58,17 +54,14 @@ public class LoginStudentActivity extends AppCompatActivity {
         });
     }
 
-    private String token;
-
     private void login() {
         Login login = new Login(etMail.getText().toString(), etPwd.getText().toString());
-        Call<DtoOutputTokenStudent> call = studentRepository.login(login);
 
-        call.enqueue(new Callback<DtoOutputTokenStudent>() {
+        Retrofit.getInstance(this).create(IStudentRepository.class).login(login).enqueue(new Callback<DtoOutputTokenStudent>() {
             @Override
             public void onResponse(Call<DtoOutputTokenStudent> call, Response<DtoOutputTokenStudent> response) {
                 if(response.isSuccessful()){
-                    token = response.body().getToken();
+                    String token = response.body().getToken();
 
                     int idStudent = response.body().getIdStudent();
 

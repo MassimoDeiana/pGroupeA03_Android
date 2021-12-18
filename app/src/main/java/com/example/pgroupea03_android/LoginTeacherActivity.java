@@ -18,7 +18,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class LoginTeacherActivity extends AppCompatActivity {
 
     private Button btnLogin;
@@ -72,7 +71,7 @@ public class LoginTeacherActivity extends AppCompatActivity {
                     int idTeacher = response.body().getIdTeacher();
 
                     sessionManager.saveAuthToken(idTeacher + token);
-System.out.println(token);
+
                     Intent intent = new Intent(LoginTeacherActivity.this, TeacherActivity.class);
                     startActivity(intent);
                 }else{

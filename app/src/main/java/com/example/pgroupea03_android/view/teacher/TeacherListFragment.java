@@ -66,10 +66,8 @@ public class TeacherListFragment extends Fragment {
     }
 
     private void fetchTeacherList() {
-        sessionManager = new SessionManager(getContext());
-        String token = sessionManager.fetchAuthToken().substring(1);
 
-        retrofit.create(ITeacherRepository.class).getAll(token).enqueue(new Callback<List<DtoOutputTeacher>>() {
+        retrofit.create(ITeacherRepository.class).getAll().enqueue(new Callback<List<DtoOutputTeacher>>() {
             @Override
             public void onResponse(Call<List<DtoOutputTeacher>> call, Response<List<DtoOutputTeacher>> response) {
                 if(response.code() == 201){
@@ -101,6 +99,7 @@ public class TeacherListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
+
             teacherRecyclerViewAdapter = new TeacherRecyclerViewAdapter(teacherList);
             recyclerView.setAdapter(teacherRecyclerViewAdapter);
         }

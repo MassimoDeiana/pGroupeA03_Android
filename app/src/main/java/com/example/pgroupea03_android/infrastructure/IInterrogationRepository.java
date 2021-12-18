@@ -10,18 +10,19 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
-public interface IInterrogationService {
+public interface IInterrogationRepository {
 
     @GET("Interrogation")
-    Call<List<DtoOutputInterrogation>> getAll(@Header("Authorization") String authToken);
+    Call<List<DtoOutputInterrogation>> getAll();
 
     @GET("Interrogation/{id}")
-    Call<DtoOutputInterrogation> getById(@Header("Authorization") String authToken, int id);
+    Call<DtoOutputInterrogation> getById(@Path("id")int id);
 
     @POST("Interrogation")
-    Call<DtoOutputInterrogation> create(@Header("Authorization") String authToken, DtoCreateInterrogation interrogation);
+    Call<DtoOutputInterrogation> create(DtoCreateInterrogation interrogation);
 
     @DELETE("Interrogation/{id}")
-    Call<Void> delete(@Header("Authorization") String authToken, int id);
+    Call<Void> delete(@Path("id")int id);
 }

@@ -1963,7 +1963,8 @@ int id btn_loginTeacherActivity_login 0x7f0801fa
 int id btn_mainActivity_loginStudent 0x7f0801f7
 int id btn_mainActivity_loginTeacher 0x7f0801f8
 int id btn_mainActivity_scanQr 0x7f080065
-int id btn_teacherActivity_list 0x7f080204
+int id btn_teacherActivity_courses 0x7f080205
+int id btn_teacherActivity_interrogations 0x7f080203
 int id buttonPanel 0x7f080066
 int id cache_measures 0x7f080067
 int id callMeasure 0x7f080068
@@ -2329,8 +2330,8 @@ int id transition_position 0x7f0801cd
 int id transition_scene_layoutid_cache 0x7f0801ce
 int id transition_transform 0x7f0801cf
 int id triangle 0x7f0801d0
+int id tv_interrogationDetailFragment_subject 0x7f080206
 int id tv_interrogationFragmentItem_subject 0x7f080201
-int id tv_interrogationFragmentItem_total 0x7f080202
 int id tv_teacherFragmentItem_Mail 0x7f0801d1
 int id tv_teacherFragmentItem_lastName 0x7f0801d4
 int id unchecked 0x7f0801d5
@@ -2456,6 +2457,7 @@ int layout design_navigation_menu 0x7f0b002b
 int layout design_navigation_menu_item 0x7f0b002c
 int layout design_text_input_end_icon 0x7f0b002d
 int layout design_text_input_start_icon 0x7f0b002e
+int layout fragment_interrogation_detail 0x7f0b0086
 int layout fragment_interrogation_list 0x7f0b0084
 int layout fragment_interrogation_list_item 0x7f0b0085
 int layout fragment_teacher_list 0x7f0b002f
@@ -2588,6 +2590,7 @@ int string error_icon_content_description 0x7f100027
 int string exposed_dropdown_menu_content_description 0x7f100028
 int string fab_transformation_scrim_behavior 0x7f100029
 int string fab_transformation_sheet_behavior 0x7f10002a
+int string hello_blank_fragment 0x7f100077
 int string hide_bottom_view_on_scroll_behavior 0x7f10002b
 int string icon_content_description 0x7f10002c
 int string invalid_password 0x7f10002d

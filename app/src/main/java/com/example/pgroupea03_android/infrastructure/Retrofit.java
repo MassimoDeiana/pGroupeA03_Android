@@ -30,7 +30,7 @@ public class Retrofit {
     }
 
     /**
-     * Initialise un objet OkHttpClient permettant d'indiquer un @Header("Authorization") dans chaque requête
+     * Initialise un objet OkHttpClient permettant d'indiquer un token dans chaque requête
      */
     private static OkHttpClient okHttpClient(Context context) {
         return new OkHttpClient.Builder()

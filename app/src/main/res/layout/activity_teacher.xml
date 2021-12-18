@@ -7,10 +7,27 @@
     tools:context=".TeacherActivity">
 
     <Button
-        android:id="@+id/btn_teacherActivity_list"
+        android:id="@+id/btn_teacherActivity_interrogations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="List"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="240dp" />
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="123dp"
+        android:text="Interrogations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_teacherActivity_courses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="154dp"
+        android:text="Courses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_teacherActivity_interrogations" />
 </androidx.constraintlayout.widget.ConstraintLayout>

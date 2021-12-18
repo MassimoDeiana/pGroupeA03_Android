@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,8 @@ import android.widget.Toast;
 
 import com.example.pgroupea03_android.R;
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
-import com.example.pgroupea03_android.infrastructure.IInterrogationService;
+import com.example.pgroupea03_android.infrastructure.IInterrogationRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
-import com.example.pgroupea03_android.services.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +35,10 @@ public class InterrogationListFragment extends Fragment {
     private int mColumnCount = 1;
     private InterrogationRecyclerViewAdapter interrogationRecyclerViewAdapter;
     private List<DtoOutputInterrogation> interrogationList = new ArrayList<>();
-    private SessionManager sessionManager;
-    private retrofit2.Retrofit retrofit;
 
+    public interface onInterrogationClickListener {
+        void onInterrogationClick(DtoOutputInterrogation dtoOutputInterrogation);
+    }
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -61,15 +62,11 @@ public class InterrogationListFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-        retrofit = Retrofit.getInstance(getContext());
         fetchInterrogationList();
     }
 
     private void fetchInterrogationList() {
-        sessionManager = new SessionManager(getContext());
-        String token = sessionManager.fetchAuthToken().substring(1);
-
-        retrofit.create(IInterrogationService.class).getAll(token).enqueue(new Callback<List<DtoOutputInterrogation>>() {
+        Retrofit.getInstance(getContext()).create(IInterrogationRepository.class).getAll().enqueue(new Callback<List<DtoOutputInterrogation>>() {
             @Override
             public void onResponse(Call<List<DtoOutputInterrogation>> call, Response<List<DtoOutputInterrogation>> response) {
                 if(response.code() == 201){
@@ -101,7 +98,13 @@ public class InterrogationListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            interrogationRecyclerViewAdapter = new InterrogationRecyclerViewAdapter(interrogationList);
+            onInterrogationClickListener onInterrogationClickListener = null;
+            try {
+                onInterrogationClickListener = (onInterrogationClickListener) getActivity();
+            } catch (ClassCastException e) {
+                Log.e("InterfaceImplementation", "The activity must implement OnObjectClickListener");
+            }
+            interrogationRecyclerViewAdapter = new InterrogationRecyclerViewAdapter(interrogationList, onInterrogationClickListener);
             recyclerView.setAdapter(interrogationRecyclerViewAdapter);
         }
         return view;

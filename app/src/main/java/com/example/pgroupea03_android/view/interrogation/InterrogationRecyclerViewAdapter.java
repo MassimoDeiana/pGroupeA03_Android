@@ -14,9 +14,11 @@ import java.util.List;
 public class InterrogationRecyclerViewAdapter extends RecyclerView.Adapter<InterrogationRecyclerViewAdapter.ViewHolder> {
 
     private final List<DtoOutputInterrogation> mValues;
+    private InterrogationListFragment.onInterrogationClickListener interrogationClickListener;
 
-    public InterrogationRecyclerViewAdapter(List<DtoOutputInterrogation> interros) {
+    public InterrogationRecyclerViewAdapter(List<DtoOutputInterrogation> interros, InterrogationListFragment.onInterrogationClickListener interrogationClickListener) {
         mValues = interros;
+        this.interrogationClickListener = interrogationClickListener;
     }
 
     @Override
@@ -31,7 +33,7 @@ public class InterrogationRecyclerViewAdapter extends RecyclerView.Adapter<Inter
         final DtoOutputInterrogation dtoOutputInterrogation = mValues.get(position);
         holder.mItem = dtoOutputInterrogation;
         holder.tvSubject.setText(dtoOutputInterrogation.getSubject());
-        holder.tvTotal.setText(Integer.toString(dtoOutputInterrogation.getTotal()));
+        holder.bind(interrogationClickListener);
     }
 
     @Override
@@ -41,13 +43,15 @@ public class InterrogationRecyclerViewAdapter extends RecyclerView.Adapter<Inter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView tvSubject;
-        public final TextView tvTotal;
         public DtoOutputInterrogation mItem;
 
         public ViewHolder(FragmentInterrogationListItemBinding binding) {
             super(binding.getRoot());
             tvSubject = binding.tvInterrogationFragmentItemSubject;
-            tvTotal = binding.tvInterrogationFragmentItemTotal;
+        }
+
+        public void bind(InterrogationListFragment.onInterrogationClickListener onInterrogationClickListener) {
+            itemView.setOnClickListener(view -> onInterrogationClickListener.onInterrogationClick(mItem));
         }
 
         @Override

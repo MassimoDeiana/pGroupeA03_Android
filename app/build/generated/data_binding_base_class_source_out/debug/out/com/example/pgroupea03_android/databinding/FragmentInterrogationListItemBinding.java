@@ -22,15 +22,10 @@ public final class FragmentInterrogationListItemBinding implements ViewBinding {
   @NonNull
   public final TextView tvInterrogationFragmentItemSubject;
 
-  @NonNull
-  public final TextView tvInterrogationFragmentItemTotal;
-
   private FragmentInterrogationListItemBinding(@NonNull LinearLayout rootView,
-      @NonNull TextView tvInterrogationFragmentItemSubject,
-      @NonNull TextView tvInterrogationFragmentItemTotal) {
+      @NonNull TextView tvInterrogationFragmentItemSubject) {
     this.rootView = rootView;
     this.tvInterrogationFragmentItemSubject = tvInterrogationFragmentItemSubject;
-    this.tvInterrogationFragmentItemTotal = tvInterrogationFragmentItemTotal;
   }
 
   @Override
@@ -66,14 +61,8 @@ public final class FragmentInterrogationListItemBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tv_interrogationFragmentItem_total;
-      TextView tvInterrogationFragmentItemTotal = ViewBindings.findChildViewById(rootView, id);
-      if (tvInterrogationFragmentItemTotal == null) {
-        break missingId;
-      }
-
       return new FragmentInterrogationListItemBinding((LinearLayout) rootView,
-          tvInterrogationFragmentItemSubject, tvInterrogationFragmentItemTotal);
+          tvInterrogationFragmentItemSubject);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

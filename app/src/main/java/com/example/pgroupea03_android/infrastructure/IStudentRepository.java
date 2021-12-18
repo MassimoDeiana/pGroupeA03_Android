@@ -16,5 +16,5 @@ public interface IStudentRepository {
     Call<DtoOutputTokenStudent> login(@Body Login login);
 
     @GET("Student/{id}")
-    Call<DtoOutputStudent> getById(@Header("Authorization") String authToken, int id);
+    Call<DtoOutputStudent> getById(int id);
 }

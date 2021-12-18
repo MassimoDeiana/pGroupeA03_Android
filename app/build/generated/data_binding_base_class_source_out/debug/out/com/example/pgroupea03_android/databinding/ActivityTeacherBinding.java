@@ -20,12 +20,16 @@ public final class ActivityTeacherBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button btnTeacherActivityList;
+  public final Button btnTeacherActivityCourses;
+
+  @NonNull
+  public final Button btnTeacherActivityInterrogations;
 
   private ActivityTeacherBinding(@NonNull ConstraintLayout rootView,
-      @NonNull Button btnTeacherActivityList) {
+      @NonNull Button btnTeacherActivityCourses, @NonNull Button btnTeacherActivityInterrogations) {
     this.rootView = rootView;
-    this.btnTeacherActivityList = btnTeacherActivityList;
+    this.btnTeacherActivityCourses = btnTeacherActivityCourses;
+    this.btnTeacherActivityInterrogations = btnTeacherActivityInterrogations;
   }
 
   @Override
@@ -55,13 +59,20 @@ public final class ActivityTeacherBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btn_teacherActivity_list;
-      Button btnTeacherActivityList = ViewBindings.findChildViewById(rootView, id);
-      if (btnTeacherActivityList == null) {
+      id = R.id.btn_teacherActivity_courses;
+      Button btnTeacherActivityCourses = ViewBindings.findChildViewById(rootView, id);
+      if (btnTeacherActivityCourses == null) {
         break missingId;
       }
 
-      return new ActivityTeacherBinding((ConstraintLayout) rootView, btnTeacherActivityList);
+      id = R.id.btn_teacherActivity_interrogations;
+      Button btnTeacherActivityInterrogations = ViewBindings.findChildViewById(rootView, id);
+      if (btnTeacherActivityInterrogations == null) {
+        break missingId;
+      }
+
+      return new ActivityTeacherBinding((ConstraintLayout) rootView, btnTeacherActivityCourses,
+          btnTeacherActivityInterrogations);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

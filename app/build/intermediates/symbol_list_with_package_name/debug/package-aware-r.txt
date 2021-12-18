@@ -1964,7 +1964,8 @@ id btn_loginTeacherActivity_login
 id btn_mainActivity_loginStudent
 id btn_mainActivity_loginTeacher
 id btn_mainActivity_scanQr
-id btn_teacherActivity_list
+id btn_teacherActivity_courses
+id btn_teacherActivity_interrogations
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2330,8 +2331,8 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tv_interrogationDetailFragment_subject
 id tv_interrogationFragmentItem_subject
-id tv_interrogationFragmentItem_total
 id tv_teacherFragmentItem_Mail
 id tv_teacherFragmentItem_lastName
 id unchecked
@@ -2457,6 +2458,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_interrogation_detail
 layout fragment_interrogation_list
 layout fragment_interrogation_list_item
 layout fragment_teacher_list
@@ -2589,6 +2591,7 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string invalid_password

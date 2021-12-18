@@ -18,8 +18,8 @@ public interface ITeacherRepository {
     Call<DtoOutputTokenTeacher> login(@Body Login login);
 
     @GET("Teacher")
-    Call<List<DtoOutputTeacher>> getAll(@Header("Authorization") String authToken);
+    Call<List<DtoOutputTeacher>> getAll();
 
     @GET("Teacher/{id}")
-    Call<DtoOutputTeacher> getById(@Header("Authorization") String authToken, int id);
+    Call<DtoOutputTeacher> getById(int id);
 }

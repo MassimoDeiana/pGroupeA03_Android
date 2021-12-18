@@ -19,9 +19,12 @@ public class AuthInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request.Builder requestBuilder = chain.request().newBuilder();
-        if(!sessionManager.fetchAuthToken().isEmpty())
+        String token = sessionManager.fetchAuthToken().substring(1);
+        if(token.isEmpty())
         {
-            requestBuilder.addHeader("Authorization", "Bearer $it");
+            throw new RuntimeException("Session token should be defined for auth apis");
+        } else {
+            requestBuilder.addHeader("Authorization", "Bearer " + token);
         }
         return chain.proceed(requestBuilder.build());
     }
