@@ -6,48 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".InterrogationActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="68dp"
-        android:text="Interrogation"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btn_interrogationActivity_list"
-        android:layout_width="229dp"
-        android:layout_height="122dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="91dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/white"
-        android:padding="10dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/list_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <ImageButton
-        android:id="@+id/btn_interrogationActivity_add"
-        android:layout_width="148dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="216dp"
-        android:adjustViewBounds="true"
-        android:background="@android:color/white"
-        android:padding="10dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/add_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_interrogationActivity_list" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_activityTeacher_container"
+        android:name="com.example.pgroupea03_android.view.interrogation.InterrogationListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

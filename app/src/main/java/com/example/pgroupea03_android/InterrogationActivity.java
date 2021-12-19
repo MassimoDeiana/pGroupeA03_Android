@@ -2,39 +2,27 @@ package com.example.pgroupea03_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageButton;
 
-public class InterrogationActivity extends AppCompatActivity {
+import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
+import com.example.pgroupea03_android.view.interrogation.InterrogationListFragment;
+import com.example.pgroupea03_android.view.interrogation.InterrogationReportListFragment;
 
-    private ImageButton btnList;
-    private ImageButton btnAdd;
+public class InterrogationActivity extends AppCompatActivity implements InterrogationListFragment.onInterrogationClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interrogation);
-
-        initViewInstances();
-        initListeners();
     }
 
-    private void initViewInstances() {
-        btnList = findViewById(R.id.btn_interrogationActivity_list);
-        btnAdd = findViewById(R.id.btn_interrogationActivity_add);
-    }
-
-    private void initListeners() {
-        btnList.setOnClickListener(view -> {
-            Intent intent = new Intent(InterrogationActivity.this, InterrogationListActivity.class);
-            startActivity(intent);
-        });
-
-        btnAdd.setOnClickListener(view -> {
-            //Intent intent = new Intent(InterrogationActivity.this, InterrogationListActivity.class);
-            //startActivity(intent);
-        });
+    @Override
+    public void onInterrogationClick(DtoOutputInterrogation dto) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack("interrogationList")
+                .replace(R.id.fragment_activityTeacher_container,
+                InterrogationReportListFragment.newInstance(1, dto.getIdInterro()), "interrogationReportList")
+                .commit();
     }
 }
