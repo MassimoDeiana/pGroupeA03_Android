@@ -8,46 +8,56 @@
 
     <EditText
         android:id="@+id/et_loginTeacherActivity_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
         android:layout_marginStart="66dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="66dp"
         android:ems="10"
         android:hint="Mail"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_loginTeacherActivity_title" />
 
     <EditText
         android:id="@+id/et_loginTeacherActivity_passwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="63dp"
+        android:layout_width="274dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="212dp"
+        android:layout_marginEnd="66dp"
         android:ems="10"
-        android:inputType="textPassword"
+        android:hint="Password"
+        android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_loginTeacherActivity_mail"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_loginTeacherActivity_title" />
 
     <Button
         android:id="@+id/btn_loginTeacherActivity_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="123dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="71dp"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_loginTeacherActivity_passwd" />
+
+    <TextView
+        android:id="@+id/tv_loginTeacherActivity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="55dp"
+        android:text="Login Teacher"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

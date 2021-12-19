@@ -2,27 +2,39 @@ package com.example.pgroupea03_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
 
-import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
-import com.example.pgroupea03_android.view.interrogation.InterrogationDetailFragment;
-import com.example.pgroupea03_android.view.interrogation.InterrogationListFragment;
+public class InterrogationActivity extends AppCompatActivity {
 
-public class InterrogationActivity extends AppCompatActivity implements InterrogationListFragment.onInterrogationClickListener {
+    private ImageButton btnList;
+    private ImageButton btnAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interrogation);
+
+        initViewInstances();
+        initListeners();
     }
 
-    @Override
-    public void onInterrogationClick(DtoOutputInterrogation dto) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .addToBackStack("interrogationList")
-                .replace(R.id.fragment_activityTeacher_container,
-                InterrogationDetailFragment.newInstance(dto.getIdInterro()), "interrogationDetail")
-                .commit();
+    private void initViewInstances() {
+        btnList = findViewById(R.id.btn_interrogationActivity_list);
+        btnAdd = findViewById(R.id.btn_interrogationActivity_add);
+    }
+
+    private void initListeners() {
+        btnList.setOnClickListener(view -> {
+            Intent intent = new Intent(InterrogationActivity.this, InterrogationListActivity.class);
+            startActivity(intent);
+        });
+
+        btnAdd.setOnClickListener(view -> {
+            //Intent intent = new Intent(InterrogationActivity.this, InterrogationListActivity.class);
+            //startActivity(intent);
+        });
     }
 }

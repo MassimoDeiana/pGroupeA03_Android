@@ -17,8 +17,8 @@ public interface IInterrogationRepository {
     @GET("Interrogation")
     Call<List<DtoOutputInterrogation>> getAll();
 
-    @GET("Interrogation/{id}")
-    Call<DtoOutputInterrogation> getById(@Path("id")int id);
+    @GET("Interrogation/Teacher/{id}")
+    Call<List<DtoOutputInterrogation>> getByTeacher(@Path("id")int id);
 
     @POST("Interrogation")
     Call<DtoOutputInterrogation> create(DtoCreateInterrogation interrogation);

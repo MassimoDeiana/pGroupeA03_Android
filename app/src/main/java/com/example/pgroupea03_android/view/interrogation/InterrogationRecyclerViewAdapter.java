@@ -2,14 +2,24 @@ package com.example.pgroupea03_android.view.interrogation;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pgroupea03_android.databinding.FragmentInterrogationListItemBinding;
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
+import com.example.pgroupea03_android.infrastructure.IInterrogationRepository;
+import com.example.pgroupea03_android.infrastructure.Retrofit;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class InterrogationRecyclerViewAdapter extends RecyclerView.Adapter<InterrogationRecyclerViewAdapter.ViewHolder> {
 
@@ -43,15 +53,53 @@ public class InterrogationRecyclerViewAdapter extends RecyclerView.Adapter<Inter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView tvSubject;
+        public final ImageButton btnDelete;
         public DtoOutputInterrogation mItem;
 
         public ViewHolder(FragmentInterrogationListItemBinding binding) {
             super(binding.getRoot());
             tvSubject = binding.tvInterrogationFragmentItemSubject;
+            btnDelete = binding.btnInterrogationFragmentItemDelete;
         }
 
         public void bind(InterrogationListFragment.onInterrogationClickListener onInterrogationClickListener) {
             itemView.setOnClickListener(view -> onInterrogationClickListener.onInterrogationClick(mItem));
+
+            //Bouton permettant de supprimer une interrogation
+            btnDelete.setOnClickListener(view -> {
+                //Dialog permettant de demander une validation avant d'effacer
+                DialogInterface.OnClickListener dialogClickListener = (dialogInterface, i) -> {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            Retrofit.getInstance(view.getContext()).create(IInterrogationRepository.class)
+                                    .delete(mItem.getIdInterro()).enqueue(new Callback<Void>() {
+                                @Override
+                                public void onResponse(Call<Void> call, Response<Void> response) {
+                                    if(response.code() == 200) {
+                                        mValues.remove(mItem);
+                                        notifyItemRemoved(getLayoutPosition());
+                                        notifyItemRangeChanged(mItem.getIdInterro(), mValues.size());
+                                    } else {
+                                        Toast.makeText(view.getContext(),
+                                                "At least one student has a note on this question. Please delete it first.",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<Void> call, Throwable t) {
+
+                                }
+                            });
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Delete " + mItem.getSubject());
+                builder.setMessage("This action will remove the interrogation and all related notes.\nAre you sure ?")
+                        .setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
+            });
         }
 
         @Override

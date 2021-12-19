@@ -27,7 +27,7 @@ public class TeacherActivity extends AppCompatActivity {
 
     private void initListeners() {
         btnInterrogations.setOnClickListener(view -> {
-            Intent intent = new Intent(TeacherActivity.this,InterrogationActivity.class);
+            Intent intent = new Intent(TeacherActivity.this, InterrogationActivity.class);
             startActivity(intent);
         });
 

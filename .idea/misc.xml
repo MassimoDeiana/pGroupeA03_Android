@@ -3,16 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_interrogation.xml" value="0.1675925925925926" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2296875" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/drawable/customborder.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/drawable/divider.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/drawable/empty_tall_divider.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_interrogation.xml" value="0.33" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_login.xml" value="0.2109375" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_login_student.xml" value="0.20260416666666667" />
-        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_login_teacher.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_login_teacher.xml" value="0.33" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_main.xml" value="0.2109375" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_teacher.xml" value="0.196875" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_teacher_list.xml" value="0.3625" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/activity_update_note.xml" value="0.33" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_interrogation_detail.xml" value="0.3625" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_interrogation_list.xml" value="0.3625" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_interrogation_list_item.xml" value="0.33" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_interrogation_report_list_.xml" value="0.33" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_interrogation_report_list_item.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_interrogationreport_list.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_interrogationreport_list_item.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_teacher_list.xml" value="0.3484375" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_teacher_list_item.xml" value="0.37447916666666664" />
         <entry key="..\:/Users/thier/Documents/Helha/306 Projet/Projet/pGroupeA03_TITM/pGroupeA03_android/app/src/main/res/layout/fragment_teacher_list_list.xml" value="0.3484375" />
@@ -27,5 +37,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.33" />
+      </ProjectState>
+    </option>
   </component>
 </project>

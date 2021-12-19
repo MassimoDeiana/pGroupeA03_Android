@@ -18,6 +18,7 @@ import com.example.pgroupea03_android.R;
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
 import com.example.pgroupea03_android.infrastructure.IInterrogationRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
+import com.example.pgroupea03_android.services.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,15 +67,13 @@ public class InterrogationListFragment extends Fragment {
     }
 
     private void fetchInterrogationList() {
-        Retrofit.getInstance(getContext()).create(IInterrogationRepository.class).getAll().enqueue(new Callback<List<DtoOutputInterrogation>>() {
+        SessionManager sessionManager = new SessionManager(getContext());
+        int idTeacher = sessionManager.fetchAuthId();
+        Retrofit.getInstance(getContext()).create(IInterrogationRepository.class).getByTeacher(idTeacher).enqueue(new Callback<List<DtoOutputInterrogation>>() {
             @Override
             public void onResponse(Call<List<DtoOutputInterrogation>> call, Response<List<DtoOutputInterrogation>> response) {
-                if(response.code() == 201){
-                    interrogationList.addAll(response.body());
-                    interrogationRecyclerViewAdapter.notifyItemChanged(0);
-                } else {
-                    Toast.makeText(getContext(), "You don't have the right permissions to do that." + response.code(), Toast.LENGTH_LONG).show();
-                }
+                interrogationList.addAll(response.body());
+                interrogationRecyclerViewAdapter.notifyItemChanged(0);
             }
 
             @Override

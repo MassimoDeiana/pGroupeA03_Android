@@ -16,10 +16,13 @@
         android:theme="@style/Theme.PGroupeA03_android"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".InterrogationActivity"
+            android:exported="false" />
+        <activity
             android:name=".TeacherActivity"
             android:exported="false" />
         <activity
-            android:name=".InterrogationActivity"
+            android:name=".InterrogationListActivity"
             android:exported="false" />
         <activity
             android:name=".LoginStudentActivity"
