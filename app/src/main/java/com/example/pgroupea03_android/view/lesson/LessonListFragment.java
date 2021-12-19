@@ -32,9 +32,6 @@ public class LessonListFragment extends Fragment {
     private LessonRecyclerViewAdapter lessonRecyclerViewAdapter;
     private List<DtoOutputLesson> lessonList = new ArrayList<>();
 
-    public interface onLessonClickListener {
-        void onLessonClick(DtoOutputLesson dtoOutputLesson);
-    }
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -91,13 +88,7 @@ public class LessonListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            onLessonClickListener onLessonClickListener = null;
-            try {
-                onLessonClickListener = (onLessonClickListener) getActivity();
-            } catch (ClassCastException e) {
-                Log.e("InterfaceImplementation", "The activity must implement OnObjectClickListener");
-            }
-            lessonRecyclerViewAdapter = new LessonRecyclerViewAdapter(lessonList, onLessonClickListener);
+            lessonRecyclerViewAdapter = new LessonRecyclerViewAdapter(lessonList);
             recyclerView.setAdapter(lessonRecyclerViewAdapter);
         }
         return view;

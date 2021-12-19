@@ -17,7 +17,6 @@ import com.example.pgroupea03_android.R;
 import com.example.pgroupea03_android.dtos.interrogationreport.DtoOutputInterrogationReport;
 import com.example.pgroupea03_android.infrastructure.IInterrogationReportRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
-import com.example.pgroupea03_android.view.interrogation.placeholder.PlaceholderContent;
 
 import java.util.ArrayList;
 import java.util.List;
