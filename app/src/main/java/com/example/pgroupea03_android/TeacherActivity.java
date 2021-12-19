@@ -32,7 +32,8 @@ public class TeacherActivity extends AppCompatActivity {
         });
 
         btnCourses.setOnClickListener(view -> {
-            //TODO
+            Intent intent = new Intent(TeacherActivity.this, LessonActivity.class);
+            startActivity(intent);
         });
     }
 }
