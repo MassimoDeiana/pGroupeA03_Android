@@ -10,15 +10,10 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pgroupea03_android.databinding.FragmentInterrogationListItemBinding;
 import com.example.pgroupea03_android.databinding.FragmentLessonListItemBinding;
-import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
 import com.example.pgroupea03_android.dtos.lesson.DtoOutputLesson;
-import com.example.pgroupea03_android.infrastructure.IInterrogationRepository;
 import com.example.pgroupea03_android.infrastructure.ILessonRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
-import com.example.pgroupea03_android.view.interrogation.InterrogationListFragment;
-import com.example.pgroupea03_android.view.interrogation.InterrogationRecyclerViewAdapter;
 
 import java.util.List;
 
@@ -29,11 +24,9 @@ import retrofit2.Response;
 public class LessonRecyclerViewAdapter extends RecyclerView.Adapter<LessonRecyclerViewAdapter.ViewHolder>{
 
     private final List<DtoOutputLesson> mValues;
-    private LessonListFragment.onLessonClickListener lessonClickListener;
 
-    public LessonRecyclerViewAdapter(List<DtoOutputLesson> lessons, LessonListFragment.onLessonClickListener lessonClickListener) {
+    public LessonRecyclerViewAdapter(List<DtoOutputLesson> lessons) {
         mValues = lessons;
-        this.lessonClickListener = lessonClickListener;
     }
 
     @Override
@@ -48,7 +41,7 @@ public class LessonRecyclerViewAdapter extends RecyclerView.Adapter<LessonRecycl
         final DtoOutputLesson dtoOutputLesson = mValues.get(position);
         holder.mItem = dtoOutputLesson;
         holder.tvSubject.setText(dtoOutputLesson.getSubject());
-        holder.bind(lessonClickListener);
+        holder.bind();
     }
 
     @Override
@@ -67,8 +60,7 @@ public class LessonRecyclerViewAdapter extends RecyclerView.Adapter<LessonRecycl
             btnDelete = binding.btnLessonFragmentItemDelete;
         }
 
-        public void bind(LessonListFragment.onLessonClickListener onLessonClickListener) {
-            itemView.setOnClickListener(view -> onLessonClickListener.onLessonClick(mItem));
+        public void bind() {
 
             //Bouton permettant de supprimer une Lesson
             btnDelete.setOnClickListener(view -> {

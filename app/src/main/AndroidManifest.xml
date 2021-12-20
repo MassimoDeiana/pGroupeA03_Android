@@ -16,7 +16,7 @@
         android:theme="@style/Theme.PGroupeA03_android"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".TeacherActivity"
+            android:name=".InterrogationAddActivity"
             android:exported="false" />
         <activity
             android:name=".StudentActivity"
@@ -25,8 +25,14 @@
             android:name=".InterrogationActivity"
             android:exported="false" />
         <activity
+            android:name=".TeacherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InterrogationListActivity"
+            android:exported="false" />
+        <activity
             android:name=".LessonActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".LoginStudentActivity"
             android:exported="false" />

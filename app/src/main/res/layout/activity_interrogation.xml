@@ -6,12 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".InterrogationActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_activityTeacher_container"
-        android:name="com.example.pgroupea03_android.view.interrogation.InterrogationListFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <TextView
+        android:id="@+id/tv_interrogationActivity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="68dp"
+        android:text="Interrogation"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_interrogationActivity_list"
+        android:layout_width="161dp"
+        android:layout_height="174dp"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="121dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/list_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_interrogationActivity_title" />
+
+    <ImageButton
+        android:id="@+id/btn_interrogationActivity_add"
+        android:layout_width="96dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/add_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_interrogationActivity_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

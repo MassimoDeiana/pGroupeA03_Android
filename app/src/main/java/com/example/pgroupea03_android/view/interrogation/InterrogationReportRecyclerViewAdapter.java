@@ -14,7 +14,6 @@ import com.example.pgroupea03_android.databinding.FragmentInterrogationReportLis
 import com.example.pgroupea03_android.dtos.interrogationreport.DtoOutputInterrogationReport;
 import com.example.pgroupea03_android.infrastructure.INoteRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
-import com.example.pgroupea03_android.view.interrogation.placeholder.PlaceholderContent.PlaceholderItem;
 
 import java.util.List;
 
@@ -22,10 +21,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class InterrogationReportRecyclerViewAdapter extends RecyclerView.Adapter<InterrogationReportRecyclerViewAdapter.ViewHolder> {
 
     private final List<DtoOutputInterrogationReport> mValues;

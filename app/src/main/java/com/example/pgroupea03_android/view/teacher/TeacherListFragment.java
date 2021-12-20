@@ -35,7 +35,6 @@ public class TeacherListFragment extends Fragment {
     private int mColumnCount = 1;
     private TeacherRecyclerViewAdapter teacherRecyclerViewAdapter;
     private List<DtoOutputTeacher> teacherList = new ArrayList<>();
-    private SessionManager sessionManager;
     private retrofit2.Retrofit retrofit;
 
     /**

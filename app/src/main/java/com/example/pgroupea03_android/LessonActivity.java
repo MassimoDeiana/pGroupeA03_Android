@@ -10,16 +10,11 @@ import com.example.pgroupea03_android.view.interrogation.InterrogationListFragme
 import com.example.pgroupea03_android.view.interrogation.InterrogationReportListFragment;
 import com.example.pgroupea03_android.view.lesson.LessonListFragment;
 
-public class LessonActivity extends AppCompatActivity implements LessonListFragment.onLessonClickListener{
+public class LessonActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
-    }
-
-    @Override
-    public void onLessonClick(DtoOutputLesson dtoOutputLesson) {
-
     }
 }

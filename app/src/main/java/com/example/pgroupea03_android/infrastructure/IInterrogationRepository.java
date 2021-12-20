@@ -6,6 +6,7 @@ import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -21,7 +22,7 @@ public interface IInterrogationRepository {
     Call<List<DtoOutputInterrogation>> getByTeacher(@Path("id")int id);
 
     @POST("Interrogation")
-    Call<DtoOutputInterrogation> create(DtoCreateInterrogation interrogation);
+    Call<DtoOutputInterrogation> create(@Body DtoCreateInterrogation interrogation);
 
     @DELETE("Interrogation/{id}")
     Call<Void> delete(@Path("id")int id);
