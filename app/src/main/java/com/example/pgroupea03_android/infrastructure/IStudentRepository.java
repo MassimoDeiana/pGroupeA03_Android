@@ -11,6 +11,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface IStudentRepository {
 
@@ -21,5 +23,8 @@ public interface IStudentRepository {
     Call<DtoOutputTokenStudent> login(@Body Login login);
 
     @GET("Student/{id}")
-    Call<DtoOutputStudent> getById(int id);
+    Call<DtoOutputStudent> getById(@Path("id")int id);
+
+    @PUT("Student/{idClass}/{id}")
+    Call<Void> update(@Path("idClass")int idClass, @Path("id")int id);
 }
