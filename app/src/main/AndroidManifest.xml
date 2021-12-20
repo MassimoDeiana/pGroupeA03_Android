@@ -16,6 +16,9 @@
         android:theme="@style/Theme.PGroupeA03_android"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".NoteAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".InterrogationAddActivity"
             android:exported="false" />
         <activity

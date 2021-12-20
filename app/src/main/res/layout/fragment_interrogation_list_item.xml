@@ -16,6 +16,16 @@
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <ImageButton
+        android:id="@+id/btn_interrogationFragmentItem_add"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:background="@android:color/white"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/add_icon" />
+
+    <ImageButton
         android:id="@+id/btn_interrogationFragmentItem_delete"
         android:layout_width="45dp"
         android:layout_height="match_parent"

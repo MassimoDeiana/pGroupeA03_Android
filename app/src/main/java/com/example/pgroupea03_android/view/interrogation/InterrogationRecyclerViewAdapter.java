@@ -4,12 +4,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pgroupea03_android.NoteAddActivity;
 import com.example.pgroupea03_android.databinding.FragmentInterrogationListItemBinding;
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
 import com.example.pgroupea03_android.infrastructure.IInterrogationRepository;
@@ -53,17 +55,21 @@ public class InterrogationRecyclerViewAdapter extends RecyclerView.Adapter<Inter
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView tvSubject;
+        public final ImageButton btnAdd;
         public final ImageButton btnDelete;
         public DtoOutputInterrogation mItem;
 
         public ViewHolder(FragmentInterrogationListItemBinding binding) {
             super(binding.getRoot());
             tvSubject = binding.tvInterrogationFragmentItemSubject;
+            btnAdd = binding.btnInterrogationFragmentItemAdd;
             btnDelete = binding.btnInterrogationFragmentItemDelete;
         }
 
         public void bind(InterrogationListFragment.onInterrogationClickListener onInterrogationClickListener) {
             itemView.setOnClickListener(view -> onInterrogationClickListener.onInterrogationClick(mItem));
+
+            btnAdd.setOnClickListener(view -> onInterrogationClickListener.onAddButtonClick(btnAdd));
 
             //Bouton permettant de supprimer une interrogation
             btnDelete.setOnClickListener(view -> {

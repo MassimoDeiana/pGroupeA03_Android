@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.pgroupea03_android.R;
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
@@ -38,6 +39,7 @@ public class InterrogationListFragment extends Fragment {
 
     public interface onInterrogationClickListener {
         void onInterrogationClick(DtoOutputInterrogation dtoOutputInterrogation);
+        void onAddButtonClick(ImageButton imageButton);
     }
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the

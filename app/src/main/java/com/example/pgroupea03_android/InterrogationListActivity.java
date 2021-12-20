@@ -2,7 +2,9 @@ package com.example.pgroupea03_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
 import com.example.pgroupea03_android.view.interrogation.InterrogationListFragment;
@@ -24,5 +26,11 @@ public class InterrogationListActivity extends AppCompatActivity implements Inte
                 .replace(R.id.fragment_activityTeacher_container,
                 InterrogationReportListFragment.newInstance(1, dto.getIdInterro()), "interrogationReportList")
                 .commit();
+    }
+
+    @Override
+    public void onAddButtonClick(ImageButton imageButton) {
+        Intent intent = new Intent(InterrogationListActivity.this, NoteAddActivity.class);
+        startActivity(intent);
     }
 }

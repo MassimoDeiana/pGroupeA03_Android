@@ -39,14 +39,14 @@
         android:id="@+id/btn_interrogationActivity_add"
         android:layout_width="96dp"
         android:layout_height="173dp"
-        android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
         android:adjustViewBounds="true"
         android:background="@android:color/white"
         android:padding="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/add_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_interrogationActivity_list" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

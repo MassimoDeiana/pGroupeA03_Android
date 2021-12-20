@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class DtoOutputStudent {
     private Integer idStudent,idClass;
-    private String name,firstName,mail;
+    private String name, firstName,mail;
     private Date birthDate;
 
     public DtoOutputStudent(int idStudent, int idClass, String name, String firstName, String mail, Date birthDate) {
@@ -62,5 +62,10 @@ public class DtoOutputStudent {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + firstName;
     }
 }
