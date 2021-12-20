@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pgroupea03_android.dtos.student.DtoOutputTokenStudent;
 import com.example.pgroupea03_android.infrastructure.IStudentRepository;
+import com.example.pgroupea03_android.infrastructure.ITeacherRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
 import com.example.pgroupea03_android.model.Login;
 import com.example.pgroupea03_android.services.SessionManager;
@@ -23,16 +25,24 @@ public class LoginStudentActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText etMail, etPwd;
 
+    private retrofit2.Retrofit retrofit;
+    private IStudentRepository studentClient;
     private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_teacher);
+        setContentView(R.layout.activity_login_student);
 
-        initSession();
+        initRetrofit();
         initViewInstances();
         initListeners();
+    }
+
+    private void initRetrofit() {
+        retrofit = Retrofit.getInstance(this);
+        studentClient = retrofit.create(IStudentRepository.class);
+        sessionManager = new SessionManager(this);
     }
 
     private void initSession() {
@@ -40,9 +50,9 @@ public class LoginStudentActivity extends AppCompatActivity {
     }
 
     private void initViewInstances() {
-        btnLogin = findViewById(R.id.btn_loginTeacherActivity_login);
-        etMail = findViewById(R.id.et_loginTeacherActivity_mail);
-        etPwd = findViewById(R.id.et_loginTeacherActivity_passwd);
+        btnLogin = findViewById(R.id.btn_loginStudentActivity_login);
+        etMail = findViewById(R.id.et_loginStudentActivity_mail);
+        etPwd = findViewById(R.id.et_loginStudentActivity_passwd);
     }
 
     private void initListeners() {
@@ -61,6 +71,7 @@ public class LoginStudentActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<DtoOutputTokenStudent> call, Response<DtoOutputTokenStudent> response) {
                 if(response.isSuccessful()){
+                    Log.d("ici","ici");
                     String token = response.body().getToken();
 
                     int idStudent = response.body().getIdStudent();
@@ -68,9 +79,10 @@ public class LoginStudentActivity extends AppCompatActivity {
                     sessionManager.saveAuthToken(token);
                     sessionManager.saveAuthId(idStudent);
 
-                    Intent intent = new Intent(LoginStudentActivity.this, TeacherListActivity.class);
+                    Intent intent = new Intent(LoginStudentActivity.this, StudentActivity.class);
                     startActivity(intent);
                 }else{
+                    Log.d("ici","la");
                     Toast.makeText(LoginStudentActivity.this, "login not correct :(", Toast.LENGTH_SHORT).show();
                     System.out.println("login not correct :(");
                 }

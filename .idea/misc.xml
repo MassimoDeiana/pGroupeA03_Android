@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/activity_interrogation.xml" value="0.190625" />
         <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/activity_lesson.xml" value="0.190625" />
+        <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/activity_student.xml" value="0.25416666666666665" />
+        <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/activity_teacher.xml" value="0.25416666666666665" />
         <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/fragment_courses_detail.xml" value="0.19010416666666666" />
         <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/fragment_courses_list.xml" value="0.19010416666666666" />
         <entry key="..\:/PROJET/pGroupeA03_Android/app/src/main/res/layout/fragment_courses_list_item.xml" value="0.4" />
