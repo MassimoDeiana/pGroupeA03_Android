@@ -28,4 +28,9 @@ public class DtoOutputLesson {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
+    @Override
+    public String toString() {
+        return subject;
+    }
 }

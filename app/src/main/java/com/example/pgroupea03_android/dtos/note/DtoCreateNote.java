@@ -1,5 +1,6 @@
 package com.example.pgroupea03_android.dtos.note;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class DtoCreateNote {
@@ -7,11 +8,11 @@ public class DtoCreateNote {
     private Integer idTeacher;
     private Integer idStudent;
     private Integer idInterro;
-    private Date dateNote;
+    private String dateNote;
     private double result;
     private String message;
 
-    public DtoCreateNote(Integer idTeacher, Integer idStudent, Integer idInterro, Date dateNote, double result, String message) {
+    public DtoCreateNote(Integer idTeacher, Integer idStudent, Integer idInterro, String dateNote, double result, String message) {
         this.idTeacher = idTeacher;
         this.idStudent = idStudent;
         this.idInterro = idInterro;
@@ -44,11 +45,11 @@ public class DtoCreateNote {
         this.idInterro = idInterro;
     }
 
-    public Date getDateNote() {
+    public String getDateNote() {
         return dateNote;
     }
 
-    public void setDateNote(Date dateNote) {
+    public void setDateNote(String dateNote) {
         this.dateNote = dateNote;
     }
 

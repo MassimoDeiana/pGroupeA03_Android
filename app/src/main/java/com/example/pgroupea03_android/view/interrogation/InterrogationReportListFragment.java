@@ -46,7 +46,6 @@ public class InterrogationReportListFragment extends Fragment {
     public InterrogationReportListFragment() {
     }
 
-    // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static InterrogationReportListFragment newInstance(int columnCount, int idInterro) {
         InterrogationReportListFragment fragment = new InterrogationReportListFragment();
@@ -74,11 +73,9 @@ public class InterrogationReportListFragment extends Fragment {
                     public void onResponse(Call<List<DtoOutputInterrogationReport>> call, Response<List<DtoOutputInterrogationReport>> response) {
                         if(response.code() == 200) {
                             interrogationReportList.addAll(response.body());
-                            System.out.println(idInterro);
-                            System.out.println(response.body());
                             interrogationReportRecyclerViewAdapter.notifyItemChanged(0);
                         } else {
-                            Toast.makeText(getContext(), "You don't have the right permissions to do that." + response.code(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getContext(), "You don't have the right permissions to do that.", Toast.LENGTH_LONG).show();
                         }
                     }
 

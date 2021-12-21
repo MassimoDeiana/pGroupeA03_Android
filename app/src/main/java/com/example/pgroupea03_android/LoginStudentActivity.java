@@ -4,17 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.pgroupea03_android.dtos.student.DtoOutputTokenStudent;
 import com.example.pgroupea03_android.infrastructure.IStudentRepository;
-import com.example.pgroupea03_android.infrastructure.ITeacherRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
 import com.example.pgroupea03_android.model.Login;
 import com.example.pgroupea03_android.services.SessionManager;
+import com.example.pgroupea03_android.services.UserType;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,8 +24,6 @@ public class LoginStudentActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText etMail, etPwd;
 
-    private retrofit2.Retrofit retrofit;
-    private IStudentRepository studentClient;
     private SessionManager sessionManager;
 
     @Override
@@ -40,12 +37,6 @@ public class LoginStudentActivity extends AppCompatActivity {
     }
 
     private void initRetrofit() {
-        retrofit = Retrofit.getInstance(this);
-        studentClient = retrofit.create(IStudentRepository.class);
-        sessionManager = new SessionManager(this);
-    }
-
-    private void initSession() {
         sessionManager = new SessionManager(this);
     }
 
@@ -65,24 +56,23 @@ public class LoginStudentActivity extends AppCompatActivity {
     }
 
     private void login() {
-        Login login = new Login(etMail.getText().toString(), etPwd.getText().toString());
+        Login login = new Login(etMail.getText().toString().trim(), etPwd.getText().toString());
 
-        Retrofit.getInstance(this).create(IStudentRepository.class).login(login).enqueue(new Callback<DtoOutputTokenStudent>() {
+        Retrofit.getInstance(getApplicationContext()).create(IStudentRepository.class).login(login).enqueue(new Callback<DtoOutputTokenStudent>() {
             @Override
             public void onResponse(Call<DtoOutputTokenStudent> call, Response<DtoOutputTokenStudent> response) {
                 if(response.isSuccessful()){
-                    Log.d("ici","ici");
                     String token = response.body().getToken();
 
                     int idStudent = response.body().getIdStudent();
 
                     sessionManager.saveAuthToken(token);
                     sessionManager.saveAuthId(idStudent);
+                    sessionManager.saveAuthType(UserType.STUDENT);
 
                     Intent intent = new Intent(LoginStudentActivity.this, StudentActivity.class);
                     startActivity(intent);
                 }else{
-                    Log.d("ici","la");
                     Toast.makeText(LoginStudentActivity.this, "login not correct :(", Toast.LENGTH_SHORT).show();
                     System.out.println("login not correct :(");
                 }

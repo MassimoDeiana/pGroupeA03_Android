@@ -9,7 +9,7 @@ import android.widget.Button;
 public class TeacherActivity extends AppCompatActivity {
 
     private Button btnInterrogations;
-    private Button btnCourses;
+    private Button btnLessons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class TeacherActivity extends AppCompatActivity {
 
     private void initViewInstances() {
         btnInterrogations = findViewById(R.id.btn_teacherActivity_interrogations);
-        btnCourses = findViewById(R.id.btn_teacherActivity_courses);
+        btnLessons = findViewById(R.id.btn_teacherActivity_lessons);
     }
 
     private void initListeners() {
@@ -31,7 +31,7 @@ public class TeacherActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        btnCourses.setOnClickListener(view -> {
+        btnLessons.setOnClickListener(view -> {
             Intent intent = new Intent(TeacherActivity.this, LessonActivity.class);
             startActivity(intent);
         });

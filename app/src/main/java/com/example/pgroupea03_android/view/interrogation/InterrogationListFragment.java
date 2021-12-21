@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 
 import com.example.pgroupea03_android.R;
 import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
+import com.example.pgroupea03_android.dtos.lesson.DtoOutputLesson;
 import com.example.pgroupea03_android.infrastructure.IInterrogationRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
 import com.example.pgroupea03_android.services.SessionManager;
@@ -39,7 +40,7 @@ public class InterrogationListFragment extends Fragment {
 
     public interface onInterrogationClickListener {
         void onInterrogationClick(DtoOutputInterrogation dtoOutputInterrogation);
-        void onAddButtonClick(ImageButton imageButton);
+        void onAddButtonClick(DtoOutputInterrogation dtoOutputInterrogation);
     }
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -102,7 +103,7 @@ public class InterrogationListFragment extends Fragment {
             try {
                 onInterrogationClickListener = (onInterrogationClickListener) getActivity();
             } catch (ClassCastException e) {
-                Log.e("InterfaceImplementation", "The activity must implement OnObjectClickListener");
+                Log.e("InterfaceImplementation", "The activity must implement onInterrogationClickListener");
             }
             interrogationRecyclerViewAdapter = new InterrogationRecyclerViewAdapter(interrogationList, onInterrogationClickListener);
             recyclerView.setAdapter(interrogationRecyclerViewAdapter);

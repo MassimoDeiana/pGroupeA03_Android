@@ -69,7 +69,7 @@ public class InterrogationRecyclerViewAdapter extends RecyclerView.Adapter<Inter
         public void bind(InterrogationListFragment.onInterrogationClickListener onInterrogationClickListener) {
             itemView.setOnClickListener(view -> onInterrogationClickListener.onInterrogationClick(mItem));
 
-            btnAdd.setOnClickListener(view -> onInterrogationClickListener.onAddButtonClick(btnAdd));
+            btnAdd.setOnClickListener(view -> onInterrogationClickListener.onAddButtonClick(mItem));
 
             //Bouton permettant de supprimer une interrogation
             btnDelete.setOnClickListener(view -> {

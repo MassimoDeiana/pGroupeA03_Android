@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
+        style="@android:style/Widget.Holo.Light.Spinner"
         android:id="@+id/spinner_interrogationAddActivity_lesson"
         android:layout_width="323dp"
         android:layout_height="68dp"

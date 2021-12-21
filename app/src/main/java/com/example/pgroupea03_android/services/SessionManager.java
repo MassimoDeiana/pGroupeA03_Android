@@ -9,6 +9,7 @@ public class SessionManager {
     private SharedPreferences preferences;
     private static final String USER_TOKEN = "user_token";
     private static final String USER_ID = "user_id";
+    private static final String USER_TYPE = "user_type";
 
     public SessionManager(Context context) {
         preferences = context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE);
@@ -35,6 +36,16 @@ public class SessionManager {
     }
 
     /**
+     * Méthode permettant d'enregistrer le type d'utilisateur
+     * @param type : le type d'utilisateur à enregistrer
+     */
+    public void saveAuthType(UserType type) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(USER_TYPE, type.ordinal());
+        editor.apply();
+    }
+
+    /**
      * Méthode permettant de récupérer le token enregistré
      * @return le token s'il existe
      */
@@ -48,5 +59,13 @@ public class SessionManager {
      */
     public int fetchAuthId() {
         return preferences.getInt(USER_ID, 0);
+    }
+
+    /**
+     * Méthode permettant de récupérer le type d'utilisateur enregistré
+     * @return le type d'utilisateur s'il existe
+     */
+    public int fetchAuthType() {
+        return preferences.getInt(USER_TYPE, 0);
     }
 }

@@ -1,6 +1,9 @@
 package com.example.pgroupea03_android.dtos.interrogation;
 
-public class DtoOutputInterrogation {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DtoOutputInterrogation implements Parcelable {
 
     private Integer idInterro;
 
@@ -19,6 +22,42 @@ public class DtoOutputInterrogation {
         this.subject = subject;
         this.total = total;
     }
+
+    protected DtoOutputInterrogation(Parcel in) {
+        if (in.readByte() == 0) {
+            idInterro = null;
+        } else {
+            idInterro = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            idTeacher = null;
+        } else {
+            idTeacher = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            idLesson = null;
+        } else {
+            idLesson = in.readInt();
+        }
+        subject = in.readString();
+        if (in.readByte() == 0) {
+            total = null;
+        } else {
+            total = in.readInt();
+        }
+    }
+
+    public static final Creator<DtoOutputInterrogation> CREATOR = new Creator<DtoOutputInterrogation>() {
+        @Override
+        public DtoOutputInterrogation createFromParcel(Parcel in) {
+            return new DtoOutputInterrogation(in);
+        }
+
+        @Override
+        public DtoOutputInterrogation[] newArray(int size) {
+            return new DtoOutputInterrogation[size];
+        }
+    };
 
     public Integer getIdInterro() {
         return idInterro;
@@ -58,5 +97,44 @@ public class DtoOutputInterrogation {
 
     public void setTotal(Integer total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return subject;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (idInterro == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(idInterro);
+        }
+        if (idTeacher == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(idTeacher);
+        }
+        if (idLesson == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(idLesson);
+        }
+        parcel.writeString(subject);
+        if (total == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(total);
+        }
     }
 }

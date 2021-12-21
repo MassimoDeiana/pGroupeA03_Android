@@ -13,6 +13,7 @@ import com.example.pgroupea03_android.infrastructure.ITeacherRepository;
 import com.example.pgroupea03_android.model.Login;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
 import com.example.pgroupea03_android.services.SessionManager;
+import com.example.pgroupea03_android.services.UserType;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,8 +24,6 @@ public class LoginTeacherActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText etMail, etPwd;
 
-    private retrofit2.Retrofit retrofit;
-    private ITeacherRepository teacherClient;
     private SessionManager sessionManager;
 
     @Override
@@ -38,8 +37,6 @@ public class LoginTeacherActivity extends AppCompatActivity {
     }
 
     private void initRetrofit() {
-        retrofit = Retrofit.getInstance(this);
-        teacherClient = retrofit.create(ITeacherRepository.class);
         sessionManager = new SessionManager(this);
     }
 
@@ -59,10 +56,9 @@ public class LoginTeacherActivity extends AppCompatActivity {
     }
 
     private void login() {
-        Login login = new Login(etMail.getText().toString(), etPwd.getText().toString());
-        Call<DtoOutputTokenTeacher> call = teacherClient.login(login);
+        Login login = new Login(etMail.getText().toString().trim(), etPwd.getText().toString());
 
-        call.enqueue(new Callback<DtoOutputTokenTeacher>() {
+        Retrofit.getInstance(getApplicationContext()).create(ITeacherRepository.class).login(login).enqueue(new Callback<DtoOutputTokenTeacher>() {
             @Override
             public void onResponse(Call<DtoOutputTokenTeacher> call, Response<DtoOutputTokenTeacher> response) {
                 if(response.isSuccessful()){
@@ -72,6 +68,7 @@ public class LoginTeacherActivity extends AppCompatActivity {
 
                     sessionManager.saveAuthToken(token);
                     sessionManager.saveAuthId(idTeacher);
+                    sessionManager.saveAuthType(UserType.TEACHER);
 
                     Intent intent = new Intent(LoginTeacherActivity.this, TeacherActivity.class);
                     startActivity(intent);

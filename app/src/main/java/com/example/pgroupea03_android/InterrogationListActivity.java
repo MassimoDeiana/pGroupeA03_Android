@@ -29,8 +29,9 @@ public class InterrogationListActivity extends AppCompatActivity implements Inte
     }
 
     @Override
-    public void onAddButtonClick(ImageButton imageButton) {
+    public void onAddButtonClick(DtoOutputInterrogation dtoOutputInterrogation) {
         Intent intent = new Intent(InterrogationListActivity.this, NoteAddActivity.class);
+        intent.putExtra("interrogation", dtoOutputInterrogation);
         startActivity(intent);
     }
 }

@@ -13,10 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pgroupea03_android.R;
+import com.example.pgroupea03_android.dtos.interrogation.DtoOutputInterrogation;
 import com.example.pgroupea03_android.dtos.lesson.DtoOutputLesson;
 import com.example.pgroupea03_android.infrastructure.ILessonRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
-import com.example.pgroupea03_android.services.SessionManager;
+import com.example.pgroupea03_android.view.interrogation.InterrogationListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,10 @@ public class LessonListFragment extends Fragment {
     private int mColumnCount = 1;
     private LessonRecyclerViewAdapter lessonRecyclerViewAdapter;
     private List<DtoOutputLesson> lessonList = new ArrayList<>();
+
+    public interface onLessonClickListener {
+        void onLessonClick(DtoOutputLesson dtoOutputLesson);
+    }
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -59,7 +64,6 @@ public class LessonListFragment extends Fragment {
     }
 
     private void fetchLessonList() {
-        SessionManager sessionManager = new SessionManager(getContext());
         Retrofit.getInstance(getContext()).create(ILessonRepository.class).getAll().enqueue(new Callback<List<DtoOutputLesson>>() {
             @Override
             public void onResponse(Call<List<DtoOutputLesson>> call, Response<List<DtoOutputLesson>> response) {
@@ -88,7 +92,13 @@ public class LessonListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            lessonRecyclerViewAdapter = new LessonRecyclerViewAdapter(lessonList);
+            onLessonClickListener onLessonClickListener = null;
+            try {
+                onLessonClickListener = (onLessonClickListener) getActivity();
+            } catch (ClassCastException e) {
+                Log.e("InterfaceImplementation", "The activity must implement onLessonClickListener");
+            }
+            lessonRecyclerViewAdapter = new LessonRecyclerViewAdapter(lessonList, onLessonClickListener);
             recyclerView.setAdapter(lessonRecyclerViewAdapter);
         }
         return view;

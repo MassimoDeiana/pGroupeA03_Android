@@ -3,6 +3,7 @@ package com.example.pgroupea03_android.view.lesson;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,6 +15,8 @@ import com.example.pgroupea03_android.databinding.FragmentLessonListItemBinding;
 import com.example.pgroupea03_android.dtos.lesson.DtoOutputLesson;
 import com.example.pgroupea03_android.infrastructure.ILessonRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
+import com.example.pgroupea03_android.services.SessionManager;
+import com.example.pgroupea03_android.services.UserType;
 
 import java.util.List;
 
@@ -24,9 +27,12 @@ import retrofit2.Response;
 public class LessonRecyclerViewAdapter extends RecyclerView.Adapter<LessonRecyclerViewAdapter.ViewHolder>{
 
     private final List<DtoOutputLesson> mValues;
+    private LessonListFragment.onLessonClickListener lessonClickListener;
+    private int type;
 
-    public LessonRecyclerViewAdapter(List<DtoOutputLesson> lessons) {
+    public LessonRecyclerViewAdapter(List<DtoOutputLesson> lessons, LessonListFragment.onLessonClickListener lessonClickListener) {
         mValues = lessons;
+        this.lessonClickListener = lessonClickListener;
     }
 
     @Override
@@ -41,7 +47,7 @@ public class LessonRecyclerViewAdapter extends RecyclerView.Adapter<LessonRecycl
         final DtoOutputLesson dtoOutputLesson = mValues.get(position);
         holder.mItem = dtoOutputLesson;
         holder.tvSubject.setText(dtoOutputLesson.getSubject());
-        holder.bind();
+        holder.bind(lessonClickListener);
     }
 
     @Override
@@ -58,10 +64,17 @@ public class LessonRecyclerViewAdapter extends RecyclerView.Adapter<LessonRecycl
             super(binding.getRoot());
             tvSubject = binding.tvLessonFragmentItemSubject;
             btnDelete = binding.btnLessonFragmentItemDelete;
+            SessionManager sessionManager = new SessionManager(btnDelete.getContext());
+            type = sessionManager.fetchAuthType();
+            if (type == UserType.STUDENT.ordinal()) {
+                btnDelete.setVisibility(View.INVISIBLE);
+            }
         }
 
-        public void bind() {
-
+        public void bind(LessonListFragment.onLessonClickListener onLessonClickListener) {
+            if (type == UserType.STUDENT.ordinal()) {
+                itemView.setOnClickListener(view -> onLessonClickListener.onLessonClick(mItem));
+            }
             //Bouton permettant de supprimer une Lesson
             btnDelete.setOnClickListener(view -> {
                 //Dialog permettant de demander une validation avant d'effacer
@@ -104,5 +117,4 @@ public class LessonRecyclerViewAdapter extends RecyclerView.Adapter<LessonRecycl
             return super.toString() + " '" + tvSubject.getText() + "'";
         }
     }
-
 }

@@ -6,6 +6,7 @@ import com.example.pgroupea03_android.dtos.lesson.DtoOutputLesson;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -20,10 +21,8 @@ public interface ILessonRepository {
     Call<DtoOutputLesson> getById(@Path("id")int id);
 
     @POST("Lesson")
-    Call<DtoOutputLesson> create(DtoCreateLesson lesson);
+    Call<DtoOutputLesson> create(@Body DtoCreateLesson lesson);
 
     @DELETE("Lesson/{id}")
     Call<Void> delete(@Path("id")int id);
-
-
 }

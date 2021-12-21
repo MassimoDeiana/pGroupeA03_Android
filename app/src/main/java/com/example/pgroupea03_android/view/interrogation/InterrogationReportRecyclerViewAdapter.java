@@ -42,7 +42,7 @@ public class InterrogationReportRecyclerViewAdapter extends RecyclerView.Adapter
         holder.mItem = dtoOutputInterrogationReport;
         holder.tvName.setText(dtoOutputInterrogationReport.getName());
         holder.tvFirstName.setText(dtoOutputInterrogationReport.getFirstName());
-        holder.tvResult.setText(String.valueOf(dtoOutputInterrogationReport.getResult()) + "/" + String.valueOf(dtoOutputInterrogationReport.getTotal()));
+        holder.tvResult.setText(dtoOutputInterrogationReport.getResult() + "/" + dtoOutputInterrogationReport.getTotal());
         holder.tvMessage.setText(dtoOutputInterrogationReport.getMessage());
         holder.bind();
     }

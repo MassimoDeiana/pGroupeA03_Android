@@ -10,15 +10,25 @@
         android:id="@+id/btn_studentActivity_scanQr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="290dp"
-        android:layout_marginEnd="125dp"
-        android:text="scan Qr"
-        android:textSize="16sp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="123dp"
+        android:text="Scan QR"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <Button
+        android:id="@+id/btn_studentActivity_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="154dp"
+        android:text="Lessons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_studentActivity_scanQr" />
 </androidx.constraintlayout.widget.ConstraintLayout>
