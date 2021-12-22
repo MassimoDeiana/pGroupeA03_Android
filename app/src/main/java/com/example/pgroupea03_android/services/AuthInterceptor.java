@@ -8,6 +8,9 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Classe permettant d'intercepter un token et de l'injecter dans l'header des requêtes
+ */
 public class AuthInterceptor implements Interceptor {
 
     private SessionManager sessionManager;

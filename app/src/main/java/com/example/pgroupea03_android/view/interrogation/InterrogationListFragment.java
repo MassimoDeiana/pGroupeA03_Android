@@ -29,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * A fragment representing a list of Items.
+ * A fragment representing a list of Interrogations.
  */
 public class InterrogationListFragment extends Fragment {
 
@@ -69,6 +69,7 @@ public class InterrogationListFragment extends Fragment {
     }
 
     private void fetchInterrogationList() {
+        //Récupère l'id de l'utilisateur connecté
         SessionManager sessionManager = new SessionManager(getContext());
         int idTeacher = sessionManager.fetchAuthId();
         Retrofit.getInstance(getContext()).create(IInterrogationRepository.class).getByTeacher(idTeacher).enqueue(new Callback<List<DtoOutputInterrogation>>() {

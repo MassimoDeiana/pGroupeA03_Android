@@ -21,8 +21,6 @@ public interface IStudentRepository {
     @POST("Student/authenticate")
     Call<DtoOutputTokenStudent> login(@Body Login login);
 
-    @GET("Student/{id}")
-    Call<DtoOutputStudent> getById(@Path("id")int id);
 
     @PUT("Student/{idClass}/{id}")
     Call<Void> update(@Path("idClass")int idClass, @Path("id")int id);

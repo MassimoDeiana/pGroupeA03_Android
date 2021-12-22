@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 
 import com.example.pgroupea03_android.R;
 
+/**
+ * Classe permettant de stocker l'utilisateur qui se connecte
+ */
 public class SessionManager {
     private SharedPreferences preferences;
     private static final String USER_TOKEN = "user_token";

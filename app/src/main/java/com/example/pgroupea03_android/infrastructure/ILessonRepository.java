@@ -17,9 +17,6 @@ public interface ILessonRepository {
     @GET("Lesson")
     Call<List<DtoOutputLesson>> getAll();
 
-    @GET("Lesson/{id}")
-    Call<DtoOutputLesson> getById(@Path("id")int id);
-
     @POST("Lesson")
     Call<DtoOutputLesson> create(@Body DtoCreateLesson lesson);
 

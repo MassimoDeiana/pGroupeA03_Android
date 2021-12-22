@@ -18,7 +18,4 @@ public interface ITeacherRepository {
 
     @GET("Teacher")
     Call<List<DtoOutputTeacher>> getAll();
-
-    @GET("Teacher/{id}")
-    Call<DtoOutputTeacher> getById(int id);
 }

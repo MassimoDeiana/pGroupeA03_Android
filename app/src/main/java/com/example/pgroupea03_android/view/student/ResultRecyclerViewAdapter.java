@@ -15,7 +15,7 @@ import java.util.List;
 public class ResultRecyclerViewAdapter extends RecyclerView.Adapter<ResultRecyclerViewAdapter.ViewHolder> {
 
     private final List<DtoOutputResult> mValues;
-    double sum;
+    private double average;
 
     public ResultRecyclerViewAdapter(List<DtoOutputResult> items) {
         mValues = items;
@@ -53,16 +53,10 @@ public class ResultRecyclerViewAdapter extends RecyclerView.Adapter<ResultRecycl
             tvInterro = binding.tvResultFragmentItemInterro;
             tvResult = binding.tvResultFragmentItemResult;
             tvMessage = binding.tvResultFragmentItemMessage;
-            sum = 0;
-            if (mValues.size() > 0) {
-                for (DtoOutputResult result :
-                        mValues) {
-                    sum += (result.getResult() / result.getTotal()) * 100;
-                }
-                sum = sum / mValues.size();
-                sum = Math.round(sum * 100) / 100.;
 
-                Toast.makeText(tvInterro.getContext(), "You have an average of " + sum + "/100", Toast.LENGTH_LONG).show();
+            if(mValues.size() > 0) {
+                average = generateAverage(mValues);
+                Toast.makeText(tvInterro.getContext(), "You have an average of " + average + "/100", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -70,5 +64,15 @@ public class ResultRecyclerViewAdapter extends RecyclerView.Adapter<ResultRecycl
         public String toString() {
             return super.toString() + " '" + tvResult.getText() + "'";
         }
+    }
+
+    public double generateAverage(List<DtoOutputResult> list) {
+        double sum = 0;
+        for (DtoOutputResult result :
+                list) {
+            sum += (result.getResult() / result.getTotal()) * 100;
+        }
+        sum = sum / list.size();
+        return Math.round(sum * 100) / 100.;
     }
 }

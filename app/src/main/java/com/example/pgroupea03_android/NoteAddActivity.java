@@ -38,7 +38,7 @@ public class NoteAddActivity extends AppCompatActivity {
     private EditText etResult;
     private EditText etMessage;
     private List<DtoOutputNote> noteList;
-    List<DtoOutputInterrogationReport> interrogationReports;
+    private List<DtoOutputInterrogationReport> interrogationReports;
     private ImageButton btnValidate;
     private retrofit2.Retrofit retrofit;
 

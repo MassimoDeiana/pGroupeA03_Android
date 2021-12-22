@@ -14,9 +14,6 @@ import retrofit2.http.Path;
 
 public interface INoteRepository {
 
-    @GET("Note")
-    Call<List<DtoOutputNote>> getAll();
-
     @POST("Note")
     Call<DtoOutputNote> create(@Body DtoCreateNote note);
 

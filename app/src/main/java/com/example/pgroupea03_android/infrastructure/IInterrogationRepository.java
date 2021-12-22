@@ -15,9 +15,6 @@ import retrofit2.http.Path;
 
 public interface IInterrogationRepository {
 
-    @GET("Interrogation")
-    Call<List<DtoOutputInterrogation>> getAll();
-
     @GET("Interrogation/{id}")
     Call<DtoOutputInterrogation> getById(@Path("id")int id);
 
