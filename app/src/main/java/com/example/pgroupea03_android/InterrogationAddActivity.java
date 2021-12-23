@@ -51,6 +51,10 @@ public class InterrogationAddActivity extends AppCompatActivity {
         initListeners();
     }
 
+    /**
+     * Méthode permettant d'initialiser les différents attributs de l'activité
+     * et d'associer les différents composants aux composants graphiques du layout
+     */
     private void initViewInstances() {
         spinnerLesson = findViewById(R.id.spinner_interrogationAddActivity_lesson);
         etSubject = findViewById(R.id.et_interrogationAddActivity_subject);
@@ -77,6 +81,9 @@ public class InterrogationAddActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
+     */
     private void initListeners() {
         btnValidate.setOnClickListener(view -> {
             SessionManager sessionManager = new SessionManager(this);

@@ -51,6 +51,10 @@ public class NoteAddActivity extends AppCompatActivity {
         initListeners();
     }
 
+    /**
+     * Méthode permettant d'initialiser les différents attributs de l'activité
+     * et d'associer les différents composants aux composants graphiques du layout
+     */
     private void initViewInstances() {
         spinnerStudent = findViewById(R.id.spinner_noteAddActivity_student);
         etResult = findViewById(R.id.et_noteAddActivity_result);
@@ -78,6 +82,9 @@ public class NoteAddActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
+     */
     private void initListeners() {
         btnValidate.setOnClickListener(view -> {
             //Récupère l'idTeacher stocké dans les préfèrences partagées

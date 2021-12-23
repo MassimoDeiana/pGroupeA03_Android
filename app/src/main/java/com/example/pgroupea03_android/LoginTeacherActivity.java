@@ -40,12 +40,19 @@ public class LoginTeacherActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
     }
 
+    /**
+     * Méthode permettant d'initialiser les différents attributs de l'activité
+     * et d'associer les différents composants aux composants graphiques du layout
+     */
     private void initViewInstances() {
         btnLogin = findViewById(R.id.btn_loginTeacherActivity_login);
         etMail = findViewById(R.id.et_loginTeacherActivity_mail);
         etPwd = findViewById(R.id.et_loginTeacherActivity_passwd);
     }
 
+    /**
+     * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
+     */
     private void initListeners() {
         btnLogin.setOnClickListener((view)->{login();});
 

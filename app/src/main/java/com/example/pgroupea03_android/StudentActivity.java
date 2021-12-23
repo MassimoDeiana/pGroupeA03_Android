@@ -38,11 +38,18 @@ public class StudentActivity extends AppCompatActivity implements View.OnClickLi
         initListeners();
     }
 
+    /**
+     * Méthode permettant d'initialiser les différents attributs de l'activité
+     * et d'associer les différents composants aux composants graphiques du layout
+     */
     private void initViewInstances() {
         btnScan = findViewById(R.id.btn_studentActivity_scanQr);
         btnResult = findViewById(R.id.btn_studentActivity_result);
     }
 
+    /**
+     * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
+     */
     private void initListeners() {
         btnScan.setOnClickListener(this);
         btnResult.setOnClickListener(view -> {

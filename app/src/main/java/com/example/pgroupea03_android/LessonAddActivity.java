@@ -37,6 +37,10 @@ public class LessonAddActivity extends AppCompatActivity {
         initListeners();
     }
 
+    /**
+     * Méthode permettant d'initialiser les différents attributs de l'activité
+     * et d'associer les différents composants aux composants graphiques du layout
+     */
     private void initViewInstances() {
         etSubject = findViewById(R.id.et_lessonAddActivity_subject);
         btnValidate = findViewById(R.id.btn_lessonAddActivity_add);
@@ -46,6 +50,9 @@ public class LessonAddActivity extends AppCompatActivity {
         lessonRepository = Retrofit.getInstance(this).create(ILessonRepository.class);
     }
 
+    /**
+     * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
+     */
     private void initListeners() {
         btnValidate.setOnClickListener(view -> {
             lessonRepository.getAll().enqueue(new Callback<List<DtoOutputLesson>>() {

@@ -20,11 +20,18 @@ public class InterrogationActivity extends AppCompatActivity {
         initListeners();
     }
 
+    /**
+     * Méthode permettant d'initialiser les différents attributs de l'activité
+     * et d'associer les différents composants aux composants graphiques du layout
+     */
     private void initViewInstances() {
         btnList = findViewById(R.id.btn_interrogationActivity_list);
         btnAdd = findViewById(R.id.btn_interrogationActivity_add);
     }
 
+    /**
+     * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
+     */
     private void initListeners() {
         btnList.setOnClickListener(view -> {
             Intent intent = new Intent(InterrogationActivity.this, InterrogationListActivity.class);
