@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pgroupea03_android.dtos.schoolclass.DtoOutputSchoolclass;
+import com.example.pgroupea03_android.infrastructure.INoteRepository;
 import com.example.pgroupea03_android.infrastructure.ISchoolClassRepository;
 import com.example.pgroupea03_android.infrastructure.IStudentRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
@@ -28,6 +29,7 @@ public class StudentActivity extends AppCompatActivity implements View.OnClickLi
     private Button btnScan;
     private Button btnResult;
     private String className;
+    private int idClass = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +75,24 @@ public class StudentActivity extends AppCompatActivity implements View.OnClickLi
                 //Url du QR
                 SessionManager sessionManager = new SessionManager(this);
                 int idStudent = sessionManager.fetchAuthId();
-                int idClass= Integer.parseInt(result.getContents().substring(7));
 
+                try {
+                    idClass= Integer.parseInt(result.getContents());
+                }catch (NumberFormatException e){
+                    Log.d("catch","on est dans Catch");
+                    DialogInterface.OnClickListener dialogClickListener = (dialogInterface, i) -> {
+                        switch (i) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                return;
+                        }
+                    };
+
+                    builder.setTitle("QR code invalid");
+                    builder.setMessage("Try another QR code")
+                            .setPositiveButton("Ok", dialogClickListener).show();
+                    return;
+                }
+                Log.d("idclass",result.getContents());
                 builder.setTitle("Scanning result");
 
                 Retrofit.getInstance(this).create(ISchoolClassRepository.class).getById(idClass).enqueue(new Callback<DtoOutputSchoolclass>() {
