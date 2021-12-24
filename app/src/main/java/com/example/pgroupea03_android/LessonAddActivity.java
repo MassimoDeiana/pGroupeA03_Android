@@ -54,6 +54,10 @@ public class LessonAddActivity extends AppCompatActivity {
      * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
      */
     private void initListeners() {
+        etSubject.setOnClickListener(view -> {
+            etSubject.setText("test");
+        });
+
         btnValidate.setOnClickListener(view -> {
             lessonRepository.getAll().enqueue(new Callback<List<DtoOutputLesson>>() {
                 @Override

@@ -3,7 +3,6 @@ package com.example.pgroupea03_android;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pgroupea03_android.dtos.schoolclass.DtoOutputSchoolclass;
-import com.example.pgroupea03_android.infrastructure.INoteRepository;
 import com.example.pgroupea03_android.infrastructure.ISchoolClassRepository;
 import com.example.pgroupea03_android.infrastructure.IStudentRepository;
 import com.example.pgroupea03_android.infrastructure.Retrofit;
@@ -86,7 +84,6 @@ public class StudentActivity extends AppCompatActivity implements View.OnClickLi
                 try {
                     idClass= Integer.parseInt(result.getContents());
                 }catch (NumberFormatException e){
-                    Log.d("catch","on est dans Catch");
                     DialogInterface.OnClickListener dialogClickListener = (dialogInterface, i) -> {
                         switch (i) {
                             case DialogInterface.BUTTON_POSITIVE:
@@ -99,14 +96,12 @@ public class StudentActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("Ok", dialogClickListener).show();
                     return;
                 }
-                Log.d("idclass",result.getContents());
                 builder.setTitle("Scanning result");
 
                 Retrofit.getInstance(this).create(ISchoolClassRepository.class).getById(idClass).enqueue(new Callback<DtoOutputSchoolclass>() {
                     @Override
                     public void onResponse(Call<DtoOutputSchoolclass> call, Response<DtoOutputSchoolclass> response) {
                         className=response.body().getName();
-                        Log.d("test", "id student : " + idStudent + " id classe : " + idClass + " classname : " + className);
                         builder.setMessage("Move to " + className + " class");
 
                         //Les bouttons

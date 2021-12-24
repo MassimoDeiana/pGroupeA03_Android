@@ -85,6 +85,10 @@ public class InterrogationAddActivity extends AppCompatActivity {
      * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
      */
     private void initListeners() {
+        etSubject.setOnClickListener(view -> {
+            etSubject.setText("test");
+            etTotal.setText(String.valueOf(1));
+        });
         btnValidate.setOnClickListener(view -> {
             SessionManager sessionManager = new SessionManager(this);
             idTeacher = sessionManager.fetchAuthId();

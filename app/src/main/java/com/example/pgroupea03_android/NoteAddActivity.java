@@ -37,7 +37,6 @@ public class NoteAddActivity extends AppCompatActivity {
     private List<DtoOutputStudent> students;
     private EditText etResult;
     private EditText etMessage;
-    private List<DtoOutputNote> noteList;
     private List<DtoOutputInterrogationReport> interrogationReports;
     private ImageButton btnValidate;
     private retrofit2.Retrofit retrofit;
@@ -62,7 +61,6 @@ public class NoteAddActivity extends AppCompatActivity {
         btnValidate = findViewById(R.id.btn_noteAddActivity_add);
 
         students = new ArrayList<>();
-        noteList = new ArrayList<>();
 
         retrofit = Retrofit.getInstance(this);
 
@@ -86,6 +84,10 @@ public class NoteAddActivity extends AppCompatActivity {
      * Méthode permettant de définir des comportements lorsqu'une action est effectuée sur les différents composants du layout
      */
     private void initListeners() {
+        etResult.setOnClickListener(view -> {
+            etResult.setText(String.valueOf(0));
+            etMessage.setText("message");
+        });
         btnValidate.setOnClickListener(view -> {
             //Récupère l'idTeacher stocké dans les préfèrences partagées
             SessionManager sessionManager = new SessionManager(this);
